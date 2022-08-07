@@ -43,12 +43,10 @@ Adaption iterated for 40000 steps.
 
 ****
 
-## References
+## Contact
+
+For any inquiries: [chandeepadissanayake@gmail.com](mailto:chandeepadissanayake@gmail.com)
 
 [^1]: "Neural-Gas" Network for Vector Quantization and its Application to Time Series Prediction ([Paper](https://www.ks.uiuc.edu/Publications/Papers/PDF/MART93B/MART93B.pdf))
 
 [^2]: Competitive hebbian learning: Algorithm and demonstrations ([Paper](https://www.sciencedirect.com/science/article/abs/pii/S0893608005800243))
-
-## Contact
-
-For any inquiries: [chandeepadissanayake@gmail.com](mailto:chandeepadissanayake@gmail.com)
