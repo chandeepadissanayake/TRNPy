@@ -26,7 +26,7 @@ I have simulated the adaptation of a simple 2-Dimensional Square shaped manifold
 
 ### Results
 
-The simulation for the aforementioned 2-D square shaped manifold was carried out using `N = 200` (with other parameters being the same as what was suggested for the simulations by authors in section 5 of the paper) was carried out and the results were graphed.
+The simulation for the aforementioned 2-D square shaped manifold was carried out using `N = 200` (with other parameters being the same as what was suggested for the simulations by the authors in section 5 of the paper) and the results were graphed.
 Adaption iterated for 40000 steps.
 
 **Manifold**
