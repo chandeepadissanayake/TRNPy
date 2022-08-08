@@ -50,10 +50,7 @@ def _prepare_plot(V):
 def visualize_manifold(V):
     xmin, ymin, xmax, ymax, w, h, curr_ax = _prepare_plot(V)
 
-    curr_ax.set_xlim(xmin - 1, xmax + 1)
-    curr_ax.set_ylim(ymin - 1, ymax + 1)
-
-    square = patches.Rectangle((xmin, ymin), w, h, linewidth=1, edgecolor="b", facecolor="none")
+    square = patches.Rectangle((xmin, ymin), w, h, linewidth=1, edgecolor="g", facecolor="none")
     curr_ax.add_patch(square)
 
     curr_ax.scatter(V[:, 0], V[:, 1])
@@ -64,7 +61,7 @@ def visualize_manifold(V):
 def visualize_init_W(V, W):
     xmin, ymin, xmax, ymax, w, h, curr_ax = _prepare_plot(V)
 
-    square = patches.Rectangle((xmin, ymin), w, h, linewidth=1, edgecolor="b", facecolor="none")
+    square = patches.Rectangle((xmin, ymin), w, h, linewidth=1, edgecolor="g", facecolor="none")
     curr_ax.add_patch(square)
     curr_ax.scatter(W[0, :], W[1, :])
 
@@ -74,7 +71,7 @@ def visualize_init_W(V, W):
 def visualize_trn(V, W, C):
     xmin, ymin, xmax, ymax, w, h, curr_ax = _prepare_plot(V)
 
-    square = patches.Rectangle((xmin, ymin), w, h, linewidth=1, edgecolor="b", facecolor="none")
+    square = patches.Rectangle((xmin, ymin), w, h, linewidth=1, edgecolor="g", facecolor="none")
     curr_ax.add_patch(square)
 
     curr_ax.scatter(W[0, :], W[1, :])
@@ -107,7 +104,7 @@ def visualize_trn(V, W, C):
         x2s.append(x2)
         y2s.append(y2)
 
-    curr_ax.plot(x1s, y1s, x2s, y2s, marker='o')
+    curr_ax.plot(x1s, y1s, x2s, y2s, marker='o', color='b')
 
     plt.title("Manifold with Adapted Pointers")
 
