@@ -9,10 +9,15 @@ import matplotlib.patches as patches
 import trn
 
 """ Configuration """
+# Square Manifold Parameters
+xmin, ymin = 1.0, 1.0
+xmax, ymax = 3.0, 3.0
+# Number of samples to sample from input pattern space
+V_N = 10000
 # Number of pointers
 N = 200
 # Initial pointer distribution
-W_distrib = distribs_general.random
+W_distrib = distribs_general.uniform
 # Maximum number of iterations
 t_max = 200 * N
 # Lifetime and its scheduler
@@ -55,7 +60,7 @@ def visualize_manifold(V):
 
     curr_ax.scatter(V[:, 0], V[:, 1])
 
-    plt.title("Manifold")
+    plt.title("Input Patterns Distribution of the Manifold")
 
 
 def visualize_init_W(V, W):
@@ -63,9 +68,12 @@ def visualize_init_W(V, W):
 
     square = patches.Rectangle((xmin, ymin), w, h, linewidth=1, edgecolor="g", facecolor="none")
     curr_ax.add_patch(square)
-    curr_ax.scatter(W[0, :], W[1, :])
+    curr_ax.scatter(V[:, 0], V[:, 1], label="Input Pattern/Manifold")
+    curr_ax.scatter(W[0, :], W[1, :], color="white", marker='x', label="Pointer")
 
-    plt.title("Manifold with Initial Pointers")
+    curr_ax.legend(loc="upper right", numpoints=1)
+
+    plt.title("Input Patterns Distribution & Initial Pointer Distribution on the Manifold")
 
 
 def visualize_trn(V, W, C):
@@ -73,8 +81,6 @@ def visualize_trn(V, W, C):
 
     square = patches.Rectangle((xmin, ymin), w, h, linewidth=1, edgecolor="g", facecolor="none")
     curr_ax.add_patch(square)
-
-    curr_ax.scatter(W[0, :], W[1, :])
 
     x1s, y1s = [], []
     x2s, y2s = [], []
@@ -104,20 +110,23 @@ def visualize_trn(V, W, C):
         x2s.append(x2)
         y2s.append(y2)
 
-    curr_ax.plot(x1s, y1s, x2s, y2s, marker='o', color='b')
+    curr_ax.scatter(V[:, 0], V[:, 1], label="Input Pattern/Manifold")
+    curr_ax.plot(x1s, y1s, x2s, y2s, marker="x", markerfacecolor="orange", markeredgecolor="white", label="Pointer")
 
-    plt.title("Manifold with Adapted Pointers")
+    curr_ax.legend(loc="upper right", numpoints=1)
+
+    plt.title("Adapted Pointer Distribution & TRN on the Manifold")
 
 
 def main():
     # Creating the dataset
-    V = datasets.generate_square_manifold(M=200)
+    V = datasets.generate_square_manifold(M=V_N, xlow=xmin, xhigh=xmax, ylow=ymin, yhigh=ymax)
     # Visualizing manifold with the help of input patterns.
     visualize_manifold(V)
     plt.show()
 
     # Setting up pointers using initial distribution
-    W = W_distrib(V.shape[1], N)
+    W = W_distrib(V.shape[1], N, dlows=[xmin, ymin], dhighs=[xmax, ymax])
 
     # Visualizing manifolds with initial pointers
     visualize_init_W(V, W)
