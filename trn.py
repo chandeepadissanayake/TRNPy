@@ -34,6 +34,8 @@ def adapt(W, V, t_max, T_i, T_f, T_sch, eps_i, eps_f, eps_sch, lmd_i, lmd_f, lmd
                         2. lmd_f: Final value for lambda in neural gas algorithm's update rule.
                         3. t: The iteration step at which the algorithm is currently in.
                         4. t_max: Maximum number of iterations that the algorithm is expected to take.
+    :param verbose: Whether to output adaptation parameters.
+    :param output_per_steps: The number of steps to elapse before printing adaptation parameters
     :return: A 2-tuple of Numpy arrays.
              1. Updated Pointers W, with the same dimensions (D, N)
              2. Numpy array (Matrix) of dimensions (N, N) where each element at indices i, j where i != j, provides the connection strength between neural units fixed by a pointer, each.
